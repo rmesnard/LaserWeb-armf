@@ -6,12 +6,11 @@ FROM arm32v7/node:6.17-stretch
 # LaserWeb
 
 
+RUN npm install serialport --unsafe-perm --build-from-source
+
 RUN git clone https://github.com/LaserWeb/lw.comm-server.git
-#RUN cd lw.comm-server 
 
 WORKDIR /lw.comm-server
-
-RUN npm install serialport --unsafe-perm --build-from-source
 RUN npm install
 
 #WORKDIR /app
