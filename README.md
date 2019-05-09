@@ -1,21 +1,21 @@
-# Snips Home Station Docker Image
+# LaserWeb Docker File for Raspberry Pi 
+
+# LaserWeb 
+
+LaserWeb / CNCWeb 4.0 is an application for:
+
+    generating GCODE from DXF/SVG/BITMAP/JPG/PNG files for Lasers and CNC Mills (= CAM Operations)
+    controlling a connected CNC / Laser machine (running one of the supported firmwares)
 
 
-A Docker Image to build a SNIPS Satellite to work with Snips Server and Snips Doorbell   (HOME STATION)
+https://laserweb.yurl.ch/
+
+# LaserWeb  wiki
+
+https://github.com/LaserWeb/LaserWeb4/wiki
 
 
-Initial Project Here  :
-https://www.hackster.io/remy-mesnard/doorbell-intercom-with-snips-voice-assistant-68e77a
-
-GitHub Project :
-https://github.com/users/rmesnard/projects/1
-
-Wiki :
-
-
-Issues are group on SnipsDoorbell Project :  https://github.com/rmesnard/SnipsDoorbell
-
-#build
+#build docker image
 
 install git : 
 
@@ -23,41 +23,21 @@ sudo apt-get install git
 
 Build with docker :
 
-sudo docker build -t lijah/snips-homestation github.com/rmesnard/SnipsHomeStation
-
+sudo docker build -t lijah/laserweb-armf github.com/rmesnard/LaserWeb-armf
 
 #install
 
-
 create volume :
 
-sudo docker volume create snips_config
-sudo docker volume create snips_log
+sudo docker volume create laserweb_config
 
 #run 
 
-sudo docker run -d --name snips-homestation \
--v snips_log:/var/log \
--v snips_config:/usr/share/snips \
+sudo docker run -d --name laserweb \
+-v laserweb_config:/data \
 --privileged \
---device=/dev/snd:/dev/snd \
 --device=/dev/ttyUSB0 \
-lijah/snips-homestation
+lijah/laserweb-armf
 
 
-#share config 
 
-
-docker run -d -p 192.168.2.106:445:445 \
--v  snips_config:/share/data \
--v  snips_log:/share/log \
---name samba_snips trnape/rpi-samba \
--u "admin:<YOUR PASSWORD>" \
--s "snips_config:/share/data:rw:admin" \
--s "snips_log:/share/log:rw:admin" 
-
-#console
-
-sudo docker exec -it snips-homestation bash
-
-cd /usr/share/snips
