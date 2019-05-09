@@ -36,4 +36,4 @@ ENV NODE_PATH=/usr/src/node-red/node_modules:/data/node_modules
 RUN cd /usr/src/node-red/lw.comm-server
 
 
-CMD ["node", "server.js"]
+CMD ["node", "lw.comm-server/server.js"]
