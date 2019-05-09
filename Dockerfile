@@ -1,4 +1,4 @@
-FROM arm32v7/node
+FROM arm32v7/node:6.17-stretch
 
 # add support for gpio library
 
