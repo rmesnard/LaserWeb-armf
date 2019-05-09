@@ -15,5 +15,7 @@ RUN npm install
 #RUN npm install
 #COPY . /app
 
+RUN ls
+
 CMD node server.js
 EXPOSE 8000
