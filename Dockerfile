@@ -19,10 +19,6 @@ RUN useradd --home-dir /usr/src/node-red --no-create-home node-red \
 
 USER node-red
 
-# package.json contains Node-RED NPM module and node dependencies
-COPY package.json /usr/src/node-red/
-RUN npm install
-
 
 RUN git clone https://github.com/LaserWeb/lw.comm-server.git
 RUN cd lw.comm-server
