@@ -33,5 +33,7 @@ EXPOSE 1880
 ENV FLOWS=flows.json
 ENV NODE_PATH=/usr/src/node-red/node_modules:/data/node_modules
 
+RUN cd /data/lw.comm-server
 
-CMD ["npm", "start", "--", "--userDir", "/data"]
+
+CMD ["node", "server.js"]
